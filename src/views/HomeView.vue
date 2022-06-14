@@ -1,18 +1,37 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <MainLayout class="test">
+    <div class="container px-16 py-8">
+      <div class="grid grid-flow-col grid-cols-12 gap-x-10">
+        <div class="col-span-4">
+          <AppSidebar />
+        </div>
+        <div class="col-span-8">
+          <Suspense>
+            <VListItem title="New Movies" uri-api="movie/latest"/>
+          </Suspense>
+          <Suspense>
+            <VListItem title="Now Playing" column="2" to="now-playing" uri-api="movie/now_playing"/>
+          </Suspense>
+          <Suspense>
+            <VListItem title="Top Rated" column="3" to="top-rated" uri-api="movie/top_rated"/>
+          </Suspense>
+        </div>
+      </div>
+    </div>
+  </MainLayout>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+<script setup lang="ts">
+import MainLayout from '@/layouts/MainLayout.vue';
+import AppSidebar from '@/layouts/partials/AppSideBar.vue';
+import VListItem from '@/components/VListItem.vue';
 
-export default defineComponent({
-  name: 'HomeView',
-  components: {
-    HelloWorld,
-  },
-});
+const clickHandler = () => {
+  console.log("test");
+}
+
+
+// const res = await HTTP.get('movie/now_playing?page=1');
+
+// console.log(res);
 </script>
