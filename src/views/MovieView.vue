@@ -5,10 +5,18 @@
                 <div class="col-span-8">
                     <Suspense>
                         <MovieDetails />
+                        <template #fallback>
+                            <p>Loading...</p>                            
+                        </template>
                     </Suspense>
                 </div>
                 <div class="col-span-4">
-
+                    <Suspense>
+                        <SimiliarMovies />
+                        <template #fallback>
+                            <p>Loading...</p>                            
+                        </template>
+                    </Suspense>
                 </div>
             </div>
         </div>
@@ -17,5 +25,6 @@
 
 <script setup lang="ts">
 import MainLayout from '@/layouts/MainLayout.vue';
+import SimiliarMovies from '@/components/SimiliarMovies.vue';
 import MovieDetails from '@/components/MovieDetails.vue';
 </script>
