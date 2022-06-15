@@ -9,6 +9,7 @@
                 </div>
             </div>
             <VButton icon="play" stroke="currentColor" w-icon="w-20" h-icon="h-20" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full ring-offset-0 ring-slate-200 bg-white/50 backdrop-blur text-gray-700" />
+            <BookmarkButton :item="result" class="absolute top-2 left-2 ring-white ring-offset-0 text-gray-900 p-2 bg-white/30 backdrop-blur rounded-full" />
         </VSkeletonItem>
         <h2 class="text-3xl mt-8">{{ result.original_title }}</h2>
         <p class="mt-8">Overview : </p>
@@ -25,6 +26,7 @@ import { imageUrl } from '@/helper/baseUrlImage';
 import { HTTP } from '@/helper/http';
 import { useRoute } from 'vue-router';
 import VSkeletonItem from './VSkeletonItem.vue';
+import BookmarkButton from './BookmarkButton.vue';
 import VButton from './VButton.vue'
 import VChips from './VChips.vue';
 import { ref, watchEffect } from 'vue';
