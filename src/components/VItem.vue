@@ -1,5 +1,6 @@
 <template>
-    <div class="w-full shadow-xl shadow-black/20 hover:shadow-2xl transition-all relative hover:transform hover:-translate-y-2 duration-500 bg-gray-800 rounded-2xl h-56 p-4 overflow-hidden cursor-pointer">
+<div>
+    <div @click="$router.push({name: 'movie-details', params: {id: item.id}})" class="w-full shadow-xl shadow-black/20 hover:shadow-2xl transition-all relative hover:transform hover:-translate-y-2 duration-500 bg-gray-800 rounded-2xl h-56 p-4 overflow-hidden cursor-pointer">
         <img class="absolute top-0 left-0 object-cover object-center w-full h-full" :src="`${imageUrl}w400/${item.poster_path}`" :alt="item.original_title">
         <div class="absolute h-2/6 hover:h-full duration-300 transition-all bg-white/30 w-full bottom-0 left-0 rounded-2xl backdrop-blur-md">
             <div class="flex items-center info hover:flex-col transition-all gap-x-3 py-3 px-5 h-full">
@@ -19,6 +20,7 @@
     <Suspense>
         <KeywordList v-if="withKeywords" :id="item.id" />
     </Suspense>
+</div>
 </template>
 
 <script setup lang="ts">

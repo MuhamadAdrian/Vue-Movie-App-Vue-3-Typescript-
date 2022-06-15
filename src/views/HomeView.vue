@@ -1,20 +1,38 @@
 <template>
   <MainLayout class="test">
-    <div class="container px-16 py-8">
+    <div class="container mx-auto p-8">
       <div class="grid grid-flow-col grid-cols-12 gap-x-10">
         <div class="col-span-4">
           <AppSidebar />
         </div>
         <div class="col-span-8">
-          <Suspense>
-            <VListItem title="New Movies" uri-api="movie/latest"/>
-          </Suspense>
-          <Suspense>
-            <VListItem title="Now Playing" column="2" to="now-playing" uri-api="movie/now_playing"/>
-          </Suspense>
-          <Suspense>
-            <VListItem title="Top Rated" column="3" to="top-rated" uri-api="movie/top_rated"/>
-          </Suspense>
+  
+            <Suspense>
+              <VListItem title="New Movies" uri-api="movie/latest"/>
+              <template #fallback>
+                <VSkeletonListItem />
+              </template>
+            </Suspense>
+          <Transition name="bounce" mode="out-in">
+            <KeepAlive>
+              <Suspense>
+                <VListItem title="Now Playing" column="2" to="now-playing" uri-api="movie/now_playing"/>
+                <template #fallback>
+                  <VSkeletonListItem column="2" />
+                </template>
+              </Suspense>
+            </KeepAlive>
+          </Transition>
+          <Transition name="bounce" mode="out-in">
+            <KeepAlive>
+              <Suspense>
+                <VListItem title="Top Rated" column="3" to="top-rated" uri-api="movie/top_rated"/>
+                <template #fallback>
+                  <VSkeletonListItem column="3" />
+                </template>
+              </Suspense>
+            </KeepAlive>
+          </Transition>
         </div>
       </div>
     </div>
@@ -25,6 +43,7 @@
 import MainLayout from '@/layouts/MainLayout.vue';
 import AppSidebar from '@/layouts/partials/AppSideBar.vue';
 import VListItem from '@/components/VListItem.vue';
+import VSkeletonListItem from '@/components/VSkeletonListItem.vue';
 
 const clickHandler = () => {
   console.log("test");

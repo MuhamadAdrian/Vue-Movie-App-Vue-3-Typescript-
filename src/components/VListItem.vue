@@ -1,7 +1,7 @@
 <template>
     <div class="mb-12">
         <VHeading :title="title" :to="to" />
-        <div class="grid gap-x-4 grid-cols mt-4" :class="`grid-cols-${column}`">
+        <div class="grid gap-x-4 grid-cols mt-4" :class="`grid-cols-${String(column)}`">
             <div v-for="movie in suffledMovies.slice(0, Number(column))" :key="movie.id">
                 <VItem :with-keywords="withKeywords" :item="movie" class="mt-4" />
             </div>
