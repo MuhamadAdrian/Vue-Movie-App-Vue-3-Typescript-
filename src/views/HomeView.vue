@@ -6,7 +6,6 @@
           <AppSidebar />
         </div>
         <div class="col-span-8">
-  
             <Suspense>
               <VListItem title="New Movies" uri-api="movie/latest"/>
               <template #fallback>
@@ -14,29 +13,26 @@
               </template>
             </Suspense>
           <Transition name="bounce" mode="out-in">
-            <KeepAlive>
               <Suspense>
                 <VListItem title="Now Playing" column="2" to="now-playing" uri-api="movie/now_playing"/>
                 <template #fallback>
                   <VSkeletonListItem column="2" />
                 </template>
               </Suspense>
-            </KeepAlive>
           </Transition>
           <Transition name="bounce" mode="out-in">
-            <KeepAlive>
-              <Suspense>
-                <VListItem title="Top Rated" column="3" to="top-rated" uri-api="movie/top_rated"/>
-                <template #fallback>
-                  <VSkeletonListItem column="3" />
-                </template>
-              </Suspense>
-            </KeepAlive>
+            <Suspense>
+              <VListItem title="Top Rated" column="3" to="top-rated" uri-api="movie/top_rated"/>
+              <template #fallback>
+                <VSkeletonListItem column="3" />
+              </template>
+            </Suspense>
           </Transition>
         </div>
       </div>
     </div>
   </MainLayout>
+  <div class="grid-cols-3"></div>
 </template>
 
 <script setup lang="ts">

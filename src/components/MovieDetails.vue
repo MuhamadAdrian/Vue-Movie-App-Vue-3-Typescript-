@@ -1,6 +1,6 @@
 <template>
     <div>
-        <VSkeletonItem class="h-96">
+        <VSkeletonItem h="96">
             <img class="absolute top-0 left-0 w-full h-full object-cover object-center" :src="`${imageUrl}original/${result.backdrop_path}`" :alt="result.original_title">
             <div class="absolute w-full h-60 left-0 bottom-0 bg-gradient-to-t from-black to-transparent"></div>
             <div class="absolute right-5 bottom-5">
